@@ -1,0 +1,1104 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+:root {
+  --cream:        #F1EAD9;   /* page background — old scorebook paper */
+  --paper:        #FBF7EF;   /* card background, slightly lighter */
+  --ink:          #23201B;   /* primary text — fountain-pen ink */
+  --ink-soft:     #5B5548;   /* secondary text */
+  --willow:       #1F3A2E;   /* deep pitch/blazer green — primary */
+  --willow-light: #2E5240;
+  --ball:         #A3273A;   /* cricket-ball seam red — accent */
+  --brass:        #B08D57;   /* heritage / anniversary accent */
+  --line:         #DCD2BC;   /* hairline rules */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+
+  --radius: 4px;
+  --max-w: 1080px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  color: var(--willow);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ball);
+}
+
+/* ==========================================================================
+   Header / nav
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(241, 234, 217, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--willow);
+  text-decoration: none;
+}
+
+.brand .seam-mark {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+nav.primary-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+nav.primary-nav a,
+nav.primary-nav .tab-link {
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+nav.primary-nav a:hover,
+nav.primary-nav .tab-link:hover {
+  color: var(--ball);
+  border-bottom-color: var(--ball);
+}
+
+nav.primary-nav .tab-link.active {
+  color: var(--ball);
+  border-bottom-color: var(--ball);
+  font-weight: 600;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Seam divider — signature element
+   ========================================================================== */
+.seam-divider {
+  height: 34px;
+  width: 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 42px 34px;
+  opacity: 0.85;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='34' viewBox='0 0 42 34'%3E%3Cpath d='M0 17 H42' stroke='%23A3273A' stroke-width='1.5'/%3E%3Cpath d='M6 11 L10 23 M14 11 L18 23 M22 11 L26 23 M30 11 L34 23' stroke='%23A3273A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  padding: 84px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4.1rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--ball);
+}
+
+.hero p.lede {
+  margin-top: 20px;
+  font-size: 1.12rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+.hero-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 13px 22px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary {
+  background: var(--willow);
+  color: var(--cream);
+}
+.btn-primary:hover { background: var(--willow-light); }
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn-ghost:hover { border-color: var(--ball); color: var(--ball); }
+
+/* Plaque — the "25" heritage mark */
+.plaque {
+  background: var(--willow);
+  color: var(--cream);
+  border-radius: var(--radius);
+  padding: 38px 30px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 18px 40px -18px rgba(31, 58, 46, 0.55);
+}
+
+.plaque .num {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--brass);
+}
+
+.plaque .cap {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.plaque .sub {
+  margin-top: 18px;
+  font-size: 0.92rem;
+  border-top: 1px solid rgba(241, 234, 217, 0.25);
+  padding-top: 16px;
+  opacity: 0.92;
+}
+
+/* ==========================================================================
+   Tab panels
+   ========================================================================== */
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+  animation: panel-fade-in 0.4s ease;
+}
+
+@keyframes panel-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel.active { animation: none; }
+}
+
+/* ==========================================================================
+   Section shell
+   ========================================================================== */
+section.block {
+  padding: 72px 0;
+}
+
+.block-head {
+  margin-bottom: 40px;
+  max-width: 60ch;
+}
+
+.block-head h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin-top: 8px;
+}
+
+.block-head p {
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+/* ==========================================================================
+   Player spotlight
+   ========================================================================== */
+.player-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.player-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  overflow: hidden;
+}
+
+.player-photo {
+  background: var(--willow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-align: center;
+  padding: 20px;
+  min-height: 220px;
+}
+
+.player-photo .avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px dashed var(--brass);
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+.player-body {
+  padding: 28px 30px;
+}
+
+.player-body .name-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.player-body h3 {
+  font-size: 1.5rem;
+}
+
+.role-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ball);
+  border: 1px solid var(--ball);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+}
+
+.stat-row .stat .val {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  color: var(--willow);
+}
+
+.stat-row .stat .lab {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+.stat-scope {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ball);
+}
+
+.player-note {
+  margin-top: 22px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  background: var(--cream);
+  border-left: 3px solid var(--brass);
+  padding: 12px 16px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.player-matches {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px dashed var(--line);
+}
+
+.matches-head h4 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.matches-head p {
+  margin: 6px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.match-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.match-row {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+.match-row:hover {
+  border-color: var(--brass);
+  transform: translateY(-1px);
+}
+
+.match-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.match-tour {
+  color: var(--ball);
+}
+
+.match-teams {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 10px;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.match-teams em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  color: var(--willow);
+  margin-left: 4px;
+}
+
+.match-teams .vs {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+.match-perf {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.perf-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--paper);
+}
+
+.perf-item .perf-lab {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.perf-item .perf-val {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--willow);
+}
+
+.perf-item.muted .perf-val {
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+.match-awards {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 8px 10px;
+  border: 1px dashed var(--line);
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--paper);
+}
+
+.match-awards.muted {
+  opacity: 0.85;
+}
+
+.match-awards .awards-lab {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-top: 2px;
+}
+
+.match-awards .awards-empty {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.award-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.award-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ball);
+  background: rgba(163, 39, 58, 0.08);
+  border: 1px solid rgba(163, 39, 58, 0.25);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.match-result {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--willow);
+}
+
+.match-venue {
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   Weekly stories
+   ========================================================================== */
+.story-feed {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.story-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.story-card.featured {
+  grid-column: 1 / -1;
+  padding: 34px;
+}
+
+.story-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.story-meta .dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--ball);
+  display: inline-block;
+}
+
+.story-card h3 {
+  font-size: 1.25rem;
+}
+
+.story-card.featured h3 {
+  font-size: 1.7rem;
+}
+
+.story-card p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  margin: 0;
+}
+
+.story-card .read {
+  margin-top: auto;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ball);
+  text-decoration: none;
+}
+
+.story-empty {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 30px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+/* ==========================================================================
+   About / legacy
+   ========================================================================== */
+.legacy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.legacy p {
+  color: var(--ink-soft);
+}
+
+.legacy .ledger {
+  border-top: 1px solid var(--line);
+}
+
+.ledger-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.ledger-row span:first-child { color: var(--ink-soft); }
+.ledger-row span:last-child { color: var(--willow); font-weight: 600; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+  background: var(--willow);
+  color: var(--cream);
+  padding: 46px 0 30px;
+}
+
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+footer .brand-line {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+footer .fine-print {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.65;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   Shine layer — shimmer, sparkle, glow, glitch
+   ========================================================================== */
+
+/* Gradient shimmer sweeping across headline text */
+.shimmer-text {
+  background: linear-gradient(
+    100deg,
+    var(--willow) 20%,
+    var(--brass) 40%,
+    #f2d98a 50%,
+    var(--brass) 60%,
+    var(--willow) 80%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 6s linear infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% { background-position: 0% center; }
+  100% { background-position: -250% center; }
+}
+
+/* Variant for use on dark backgrounds (e.g. the plaque) */
+.shimmer-text-light {
+  background: linear-gradient(
+    100deg,
+    var(--brass) 20%,
+    #f2d98a 40%,
+    #fff6de 50%,
+    #f2d98a 60%,
+    var(--brass) 80%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 6s linear infinite;
+}
+
+/* Sparkle field — small twinkling dots layered behind the hero */
+.sparkle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--brass);
+  box-shadow: 0 0 6px 1px rgba(176, 141, 87, 0.8);
+  opacity: 0;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.hero .wrap { position: relative; z-index: 1; }
+
+/* Glowing pulse around the anniversary plaque */
+.plaque {
+  animation: plaque-glow 4s ease-in-out infinite;
+}
+
+@keyframes plaque-glow {
+  0%, 100% { box-shadow: 0 18px 40px -18px rgba(31, 58, 46, 0.55), 0 0 0 0 rgba(176, 141, 87, 0.0); }
+  50% { box-shadow: 0 18px 46px -16px rgba(31, 58, 46, 0.6), 0 0 34px 2px rgba(176, 141, 87, 0.35); }
+}
+
+.plaque .num {
+  position: relative;
+}
+
+/* Card hover lift + glow, applied across profile/story cards */
+.player-card,
+.story-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.player-card:hover,
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -22px rgba(31, 58, 46, 0.35);
+  border-color: var(--brass);
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.btn-primary:hover::after { left: 130%; }
+
+/* Glitch flicker — briefly played on a stat value when it changes via sync */
+@keyframes glitch-flicker {
+  0%   { transform: translate(0, 0); text-shadow: none; opacity: 1; }
+  10%  { transform: translate(-2px, 1px); text-shadow: 2px 0 var(--ball), -2px 0 var(--willow-light); }
+  20%  { transform: translate(2px, -1px); text-shadow: -2px 0 var(--ball), 2px 0 var(--brass); }
+  30%  { transform: translate(-1px, 0);   text-shadow: 1px 0 var(--brass), -1px 0 var(--ball); }
+  40%  { transform: translate(1px, 1px);  text-shadow: -1px 0 var(--willow-light), 1px 0 var(--ball); }
+  50%  { transform: translate(0, -1px);   text-shadow: 2px 0 var(--ball), -2px 0 var(--brass); }
+  70%  { transform: translate(-1px, 0);   text-shadow: none; }
+  100% { transform: translate(0, 0); text-shadow: none; opacity: 1; }
+}
+
+.stat .val.glitch {
+  animation: glitch-flicker 0.5s steps(2, end) 3;
+  color: var(--ball);
+}
+
+.stat .val.just-updated::before {
+  content: '● updated';
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: var(--ball);
+  margin-bottom: 2px;
+  animation: fade-out-label 3s ease forwards;
+}
+
+@keyframes fade-out-label {
+  0%, 60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text,
+  .shimmer-text-light,
+  .sparkle,
+  .plaque,
+  .stat .val.glitch,
+  .btn-primary::after {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .legacy { grid-template-columns: 1fr; }
+  .story-feed { grid-template-columns: 1fr; }
+  .story-card.featured { grid-column: auto; }
+  .player-card { grid-template-columns: 1fr; }
+  .player-photo { min-height: 160px; }
+}
+
+@media (max-width: 680px) {
+  nav.primary-nav {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    display: none;
+  }
+  nav.primary-nav.open { display: block; }
+  nav.primary-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 28px 20px;
+  }
+  nav.primary-nav a, nav.primary-nav .tab-link { display: block; width: 100%; text-align: left; padding: 12px 0; }
+  .nav-toggle { display: block; }
+  .stat-row { grid-template-columns: repeat(2, 1fr); }
+  .match-teams { flex-direction: column; gap: 4px; }
+  .match-teams .vs { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn:hover { transform: none; }
+}
+
+/* Focus visibility */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--ball);
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   Animated tabs, stagger effects, carousels, and counters
+   ========================================================================== */
+.tab-panel {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+.tab-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.tab-panel.active .stagger-item {
+  animation: staggerUp .7s ease forwards;
+}
+
+.tab-panel.active .stagger-item:nth-child(1) { animation-delay: .05s; }
+.tab-panel.active .stagger-item:nth-child(2) { animation-delay: .18s; }
+.tab-panel.active .stagger-item:nth-child(3) { animation-delay: .31s; }
+.tab-panel.active .stagger-item:nth-child(4) { animation-delay: .44s; }
+
+@keyframes staggerUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Player slider */
+.player-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.player-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+.player-grid {
+  display: flex;
+  gap: 24px;
+  transition: transform .55s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+
+.player-grid .player-card {
+  flex: 0 0 calc(100% - 8px);
+}
+
+.slider-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--willow);
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.slider-btn:hover {
+  transform: translateY(-1px);
+  background: var(--willow);
+  color: var(--cream);
+  border-color: var(--willow);
+}
+
+/* Stories carousel */
+.story-carousel {
+  position: relative;
+}
+
+.story-slide {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+.story-slide.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.story-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.story-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.story-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--line);
+  border: none;
+  cursor: pointer;
+}
+
+.story-dot.active {
+  background: var(--ball);
+}
+
+/* Cascading history rows */
+.cascade-item {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.tab-panel.active .cascade-item {
+  animation: cascadeIn .55s ease forwards;
+}
+
+.tab-panel.active .cascade-item:nth-child(1) { animation-delay: .05s; }
+.tab-panel.active .cascade-item:nth-child(2) { animation-delay: .16s; }
+.tab-panel.active .cascade-item:nth-child(3) { animation-delay: .27s; }
+.tab-panel.active .cascade-item:nth-child(4) { animation-delay: .38s; }
+
+@keyframes cascadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.count-up {
+  display: inline-block;
+  min-width: 2ch;
+}
+
+@media (max-width: 760px) {
+  .player-slider {
+    gap: 10px;
+  }
+
+  .slider-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .player-grid .player-card {
+    flex: 0 0 100%;
+  }
+}
