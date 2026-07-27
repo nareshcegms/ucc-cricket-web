@@ -442,123 +442,111 @@ async function loadPlayers() {
 loadPlayers();
 
 // ---------------------------------------------------------------------
-// Stories auto-rotating carousel
+// Match stories — pick by date
 // ---------------------------------------------------------------------
-const storySlides = [...document.querySelectorAll('.story-slide')];
-const storyDots = document.getElementById('storyDots');
-const storyProgressBar = document.getElementById('storyProgressBar');
-let storyIndex = 0;
-let previousStoryIndex = 0;
-let storyTimer;
-let storyDirection = 'next';
-const STORY_INTERVAL = 6000;
+let storiesData = [];
+let activeStoryId = null;
 
-function renderStoryDots() {
-  if (!storyDots) return;
+function fmtStoryDate(iso) {
+  const date = new Date(iso);
+  return date.toLocaleDateString(undefined, {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+}
 
-  storyDots.innerHTML = storySlides
-    .map((_, i) => `<button class="story-dot ${i === storyIndex ? 'active' : ''}" data-index="${i}" aria-label="Story ${i + 1}"></button>`)
+function renderStoryDetail(story) {
+  const detail = document.getElementById('storyDetail');
+  if (!detail || !story) return;
+
+  const highlights = (story.highlights || [])
+    .map((item) => `<span class="highlight-chip">${item}</span>`)
     .join('');
 
-  storyDots.querySelectorAll('.story-dot').forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const nextIndex = Number(dot.dataset.index);
-      storyDirection = nextIndex >= storyIndex ? 'next' : 'prev';
-      storyIndex = nextIndex;
-      showStory(storyIndex);
-      restartStoryTimer();
-    });
+  const paragraphs = (story.paragraphs || [])
+    .map((text) => `<p>${text}</p>`)
+    .join('');
+
+  detail.innerHTML = `
+    <article class="story-card featured story-card-animated">
+      <div class="story-meta pulse-meta">
+        <span>${story.type || 'Match'}</span>
+        <span class="dot"></span>
+        <span>${fmtStoryDate(story.date)}</span>
+      </div>
+      <h3>${story.title}</h3>
+      ${highlights ? `<div class="story-highlights">${highlights}</div>` : ''}
+      ${paragraphs}
+    </article>
+  `;
+}
+
+function selectStory(storyId) {
+  const story = storiesData.find((item) => item.id === storyId);
+  if (!story) return;
+
+  activeStoryId = storyId;
+  renderStoryDetail(story);
+
+  document.querySelectorAll('.story-date-link').forEach((link) => {
+    const isActive = link.dataset.storyId === storyId;
+    link.classList.toggle('active', isActive);
+    link.setAttribute('aria-current', isActive ? 'true' : 'false');
   });
 }
 
-function showStory(index) {
-  storySlides.forEach((slide) => {
-    slide.classList.remove('active', 'enter-next', 'enter-prev', 'exit-next', 'exit-prev');
-  });
+function renderStoryDateList() {
+  const list = document.getElementById('storyDateList');
+  const detail = document.getElementById('storyDetail');
+  if (!list || !detail) return;
 
-  if (storySlides[previousStoryIndex] && previousStoryIndex !== index) {
-    storySlides[previousStoryIndex].classList.add(
-      storyDirection === 'prev' ? 'exit-next' : 'exit-prev'
-    );
+  if (storiesData.length === 0) {
+    list.innerHTML = '';
+    detail.innerHTML = '<p class="story-empty">No match stories yet — add one to stories.json after your next game.</p>';
+    return;
   }
 
-  const active = storySlides[index];
-  if (active) {
-    active.classList.add(
-      'active',
-      storyDirection === 'prev' ? 'enter-prev' : 'enter-next'
+  list.innerHTML = storiesData
+    .map((story) => `
+      <li>
+        <button
+          class="story-date-link"
+          type="button"
+          data-story-id="${story.id}"
+          aria-current="false"
+        >${fmtStoryDate(story.date)}</button>
+      </li>
+    `)
+    .join('');
+
+  list.querySelectorAll('.story-date-link').forEach((link) => {
+    link.addEventListener('click', () => selectStory(link.dataset.storyId));
+  });
+}
+
+async function loadStories() {
+  try {
+    const res = await fetch('stories.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const data = await res.json();
+    storiesData = (data.stories || []).sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
     );
+
+    renderStoryDateList();
+  } catch (err) {
+    console.error('Could not load match stories:', err);
+    const detail = document.getElementById('storyDetail');
+    if (detail) {
+      detail.innerHTML = '<p class="story-empty">Could not load match stories right now.</p>';
+    }
   }
-
-  previousStoryIndex = index;
-
-  storyDots?.querySelectorAll('.story-dot').forEach((dot, i) => {
-    dot.classList.toggle('active', i === index);
-  });
-
-  resetStoryProgress();
 }
 
-function resetStoryProgress() {
-  if (!storyProgressBar) return;
-  storyProgressBar.style.animation = 'none';
-  void storyProgressBar.offsetWidth;
-  storyProgressBar.style.animation = `story-progress-fill ${STORY_INTERVAL}ms linear forwards`;
-}
-
-function nextStory() {
-  storyDirection = 'next';
-  storyIndex = (storyIndex + 1) % storySlides.length;
-  showStory(storyIndex);
-}
-
-function prevStory() {
-  storyDirection = 'prev';
-  storyIndex = (storyIndex - 1 + storySlides.length) % storySlides.length;
-  showStory(storyIndex);
-}
-
-function restartStoryTimer() {
-  clearInterval(storyTimer);
-  resetStoryProgress();
-  storyTimer = setInterval(nextStory, STORY_INTERVAL);
-}
-
-if (storySlides.length) {
-  renderStoryDots();
-  showStory(storyIndex);
-  restartStoryTimer();
-
-  document.getElementById('storyNext')?.addEventListener('click', () => {
-    nextStory();
-    restartStoryTimer();
-  });
-
-  document.getElementById('storyPrev')?.addEventListener('click', () => {
-    prevStory();
-    restartStoryTimer();
-  });
-
-  const carousel = document.getElementById('storyCarousel');
-  carousel?.addEventListener('mouseenter', () => {
-    clearInterval(storyTimer);
-    if (storyProgressBar) storyProgressBar.style.animationPlayState = 'paused';
-  });
-  carousel?.addEventListener('mouseleave', restartStoryTimer);
-
-  let storyTouchStart = 0;
-  carousel?.addEventListener('touchstart', (e) => {
-    storyTouchStart = e.touches[0].clientX;
-  }, { passive: true });
-
-  carousel?.addEventListener('touchend', (e) => {
-    const delta = e.changedTouches[0].clientX - storyTouchStart;
-    if (Math.abs(delta) < 45) return;
-    if (delta > 0) prevStory();
-    else nextStory();
-    restartStoryTimer();
-  }, { passive: true });
-}
+loadStories();
 
 // Kick off counters on the initially visible tab
 animateCounters(document.querySelector('.tab-panel.active'));
