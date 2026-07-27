@@ -12,6 +12,13 @@ if (navToggle && primaryNav) {
 // ---------------------------------------------------------------------
 // Tabs with animated transitions
 // ---------------------------------------------------------------------
+function ensureVisibleContent() {
+  document.querySelectorAll('.stagger-item').forEach((el) => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+}
+
 function showTab(tabName) {
   document.querySelectorAll('.tab-panel').forEach((panel) => {
     panel.classList.remove('active');
@@ -28,6 +35,7 @@ function showTab(tabName) {
 
     animateCounters(document.getElementById(`tab-${tabName}`));
     triggerReveal(document.getElementById(`tab-${tabName}`));
+    setTimeout(ensureVisibleContent, 800);
   });
 
   window.scrollTo({ top: 0, behavior: 'auto' });
@@ -547,6 +555,10 @@ async function loadStories() {
 }
 
 loadStories();
+
+window.addEventListener('load', () => {
+  setTimeout(ensureVisibleContent, 900);
+});
 
 // Kick off counters on the initially visible tab
 animateCounters(document.querySelector('.tab-panel.active'));

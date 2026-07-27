@@ -186,9 +186,19 @@ nav.primary-nav .tab-link.active {
   top: 12%;
   right: 8%;
   width: clamp(64px, 10vw, 96px);
-  opacity: 0.18;
+  height: clamp(64px, 10vw, 96px);
+  opacity: 0.14;
   animation: ball-float 6s ease-in-out infinite;
   pointer-events: none;
+  z-index: 0;
+}
+
+.hero-ball svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 96px;
+  max-height: 96px;
 }
 
 @keyframes ball-float {
@@ -510,7 +520,7 @@ nav.primary-nav .tab-link.active {
 
 .tab-panel.active {
   display: block;
-  animation: panel-fade-in 0.4s ease;
+  animation: panel-fade-in 0.4s ease forwards;
 }
 
 @keyframes panel-fade-in {
@@ -519,7 +529,7 @@ nav.primary-nav .tab-link.active {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tab-panel.active { animation: none; }
+  .tab-panel.active { animation: none; opacity: 1; transform: none; }
 }
 
 /* ==========================================================================
@@ -966,19 +976,16 @@ section.block {
 
 /* Story layout — date links + detail */
 .story-layout {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 28px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.story-dates {
+.story-date-bar {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 20px 16px;
-  position: sticky;
-  top: 92px;
+  padding: 18px 20px;
 }
 
 .story-dates-label {
@@ -990,31 +997,34 @@ section.block {
   color: var(--ball);
 }
 
-.story-dates ul {
+.story-date-pills {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .story-date-link {
-  width: 100%;
+  display: inline-flex;
+  align-items: center;
   text-align: left;
   background: var(--cream);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 12px 14px;
+  border-radius: 999px;
+  padding: 11px 18px;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: var(--ink);
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .story-date-link:hover {
   border-color: var(--brass);
-  transform: translateX(3px);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -14px rgba(31, 58, 46, 0.45);
 }
 
 .story-date-link.active {
@@ -1024,7 +1034,7 @@ section.block {
 }
 
 .story-detail {
-  min-height: 240px;
+  min-height: 200px;
 }
 
 .story-detail .story-card {
@@ -1284,8 +1294,6 @@ footer .fine-print {
 @media (max-width: 860px) {
   .hero .wrap { grid-template-columns: 1fr; }
   .home-cards { grid-template-columns: 1fr; }
-  .story-layout { grid-template-columns: 1fr; }
-  .story-dates { position: static; }
   .scoreboard-stats { grid-template-columns: repeat(2, 1fr); }
   .legacy { grid-template-columns: 1fr; }
   .story-feed { grid-template-columns: 1fr; }
@@ -1332,25 +1340,13 @@ a:focus-visible, button:focus-visible {
 /* ==========================================================================
    Animated tabs, stagger effects, carousels, and counters
    ========================================================================== */
-.tab-panel {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .45s ease, transform .45s ease;
-}
-
-.tab-panel.active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .stagger-item {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 1;
+  transform: none;
 }
 
 .tab-panel.active .stagger-item {
-  animation: staggerUp .7s ease forwards;
+  animation: staggerUp .7s ease both;
 }
 
 .tab-panel.active .stagger-item:nth-child(1) { animation-delay: .05s; }
@@ -1359,9 +1355,22 @@ a:focus-visible, button:focus-visible {
 .tab-panel.active .stagger-item:nth-child(4) { animation-delay: .44s; }
 
 @keyframes staggerUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger-item,
+  .tab-panel.active .stagger-item {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }
 
