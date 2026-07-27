@@ -50,6 +50,33 @@
           <button class="btn btn-primary tab-link" data-tab="players" type="button">See player profiles</button>
           <button class="btn btn-ghost tab-link" data-tab="stories" type="button">Read this week's story</button>
         </div>
+        <div class="hero-ticker stagger-item" aria-label="Latest match highlights">
+          <div class="ticker-track">
+            <span class="ticker-item"><strong>PP</strong> 69/0 in 6 overs</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Lokesh</strong> 59 — all around the ground</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Naresh</strong> 36 — steady anchor</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Murthy</strong> square-cut carnage</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Dinesh</strong> 3 wickets</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Result</strong> Won by 60+ runs</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>PP</strong> 69/0 in 6 overs</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Lokesh</strong> 59 — all around the ground</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Naresh</strong> 36 — steady anchor</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Murthy</strong> square-cut carnage</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Dinesh</strong> 3 wickets</span>
+            <span class="ticker-sep">◆</span>
+            <span class="ticker-item"><strong>Result</strong> Won by 60+ runs</span>
+          </div>
+        </div>
       </div>
       <div class="plaque stagger-item">
         <div class="num shimmer-text-light count-up" data-count="25">0</div>
@@ -65,7 +92,7 @@
   <div class="seam-divider" role="presentation"></div>
   <section class="block" id="players">
     <div class="wrap">
-      <div class="block-head">
+      <div class="block-head reveal-up">
         <p class="eyebrow">Player Spotlight</p>
         <h2>Profiles, one player at a time.</h2>
         <p>We're building this out to mirror the squad's CricHeroes stats — including highest scores, best bowling, and recent leather-ball matches.</p>
@@ -80,6 +107,7 @@
         </div>
         <button class="slider-btn next" id="playerNext" aria-label="Next player">&#10095;</button>
       </div>
+      <div class="slider-dots player-dots" id="playerDots" aria-hidden="true"></div>
 
     </div>
   </section>
@@ -90,19 +118,28 @@
   <div class="seam-divider" role="presentation"></div>
   <section class="block" id="stories">
     <div class="wrap">
-      <div class="block-head">
+      <div class="block-head reveal-up">
         <p class="eyebrow">Match Stories</p>
         <h2>What happened out there this week.</h2>
         <p>A short write-up after every match, so anyone who missed it — or missed the match itself — knows how it went.</p>
       </div>
 
       <div class="story-carousel" id="storyCarousel">
-        <div class="story-slide active">
-          <article class="story-card featured">
-            <div class="story-meta"><span>League Match</span><span class="dot"></span><span>Sunday</span></div>
-            <h3>Udaya CC chase down 142 in the final over</h3>
-            <p>A late partnership turned a tense chase into a memorable win. The crowd stayed until the final ball as Udaya CC crossed the line with two wickets to spare.</p>
-            <a href="#" class="read">Read full story →</a>
+        <div class="story-progress" aria-hidden="true"><span id="storyProgressBar"></span></div>
+
+        <div class="story-slide active" data-direction="none">
+          <article class="story-card featured story-card-animated">
+            <div class="story-meta pulse-meta"><span>League Match</span><span class="dot"></span><span>Sunday</span><span class="dot"></span><span>Latest</span></div>
+            <h3>Udaya Cricket Club demolish opponents by 60+ runs</h3>
+            <div class="story-highlights">
+              <span class="highlight-chip">69 in powerplay</span>
+              <span class="highlight-chip">Lokesh 59</span>
+              <span class="highlight-chip">Naresh 36</span>
+              <span class="highlight-chip">Dinesh 3/—</span>
+            </div>
+            <p>Udaya Cricket Club won the toss and elected to bat first. The first six overs of the powerplay brought 69 runs — Lokesh hammered bowlers all around the boundary before falling for 59. Naresh played a steady innings and scored 36; Murthy, in the middle order, demolished the spinners with square-cut boundaries.</p>
+            <p>In the bowling department, Senthil started with fiery pace and knocked over the openers early. Dinesh bowled brilliantly and finished with three wickets. Udaya Cricket Club won comfortably by 60-plus runs — once again proving their dominance, leaving the opponents to bite the dust.</p>
+            <a href="#" class="read read-pulse">Full match report →</a>
           </article>
         </div>
 
@@ -139,7 +176,7 @@
   <div class="seam-divider" role="presentation"></div>
   <section class="block" id="legacy">
     <div class="wrap legacy">
-      <div>
+      <div class="reveal-up">
         <p class="eyebrow">Our History</p>
         <h2>Same club, twenty-five years running.</h2>
         <p>Udaya Cricket Club started with a handful of players and a borrowed ground, and has kept turning up every season since. This section is a placeholder for the club's real story — founding year, notable seasons, and how it's grown. Replace this copy with your own history.</p>

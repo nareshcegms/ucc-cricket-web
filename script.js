@@ -27,6 +27,7 @@ function showTab(tabName) {
     });
 
     animateCounters(document.getElementById(`tab-${tabName}`));
+    triggerReveal(document.getElementById(`tab-${tabName}`));
   });
 
   window.scrollTo({ top: 0, behavior: 'auto' });
@@ -67,6 +68,39 @@ function initSparkles() {
 initSparkles();
 
 // ---------------------------------------------------------------------
+// Scroll / tab reveal animations
+// ---------------------------------------------------------------------
+function triggerReveal(scope = document) {
+  scope.querySelectorAll('.reveal-up').forEach((el, i) => {
+    el.classList.remove('is-visible');
+    void el.offsetWidth;
+    el.style.setProperty('--reveal-delay', `${i * 0.08}s`);
+    el.classList.add('is-visible');
+  });
+}
+
+function initRevealObserver() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal-up').forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal-up').forEach((el) => observer.observe(el));
+}
+
+initRevealObserver();
+triggerReveal(document.querySelector('.tab-panel.active'));
+
+// ---------------------------------------------------------------------
 // Count-up animation
 // ---------------------------------------------------------------------
 function animateCounters(scope = document) {
@@ -98,6 +132,37 @@ function animateCounters(scope = document) {
 // ---------------------------------------------------------------------
 const STAT_FIELDS = ['matches', 'runs', 'wickets', 'average', 'highest_score', 'best_bowling'];
 let playerIndex = 0;
+let playerTimer;
+
+function renderPlayerDots(total) {
+  const dots = document.getElementById('playerDots');
+  if (!dots || total <= 1) {
+    if (dots) dots.innerHTML = '';
+    return;
+  }
+
+  dots.innerHTML = Array.from({ length: total }, (_, i) =>
+    `<button class="slider-dot ${i === playerIndex ? 'active' : ''}" data-index="${i}" aria-label="Player ${i + 1}"></button>`
+  ).join('');
+
+  dots.querySelectorAll('.slider-dot').forEach((dot) => {
+    dot.addEventListener('click', () => {
+      playerIndex = Number(dot.dataset.index);
+      updatePlayerSlider();
+      restartPlayerTimer();
+    });
+  });
+}
+
+function restartPlayerTimer() {
+  clearInterval(playerTimer);
+  const total = document.querySelectorAll('#playerGrid .player-card').length;
+  if (total <= 1) return;
+  playerTimer = setInterval(() => {
+    playerIndex = (playerIndex + 1) % total;
+    updatePlayerSlider();
+  }, 7000);
+}
 
 function getPreviousStats(playerId) {
   try {
@@ -288,12 +353,21 @@ function updatePlayerSlider() {
   const grid = document.getElementById('playerGrid');
   if (!grid) return;
 
-  const card = grid.querySelector('.player-card');
+  const cards = grid.querySelectorAll('.player-card');
+  const card = cards[0];
   if (!card) return;
 
   const gap = 24;
   const cardWidth = card.getBoundingClientRect().width + gap;
   grid.style.transform = `translateX(-${playerIndex * cardWidth}px)`;
+
+  cards.forEach((el, i) => {
+    el.classList.toggle('is-active', i === playerIndex);
+  });
+
+  document.querySelectorAll('#playerDots .slider-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === playerIndex);
+  });
 }
 
 function setupPlayerSlider(total) {
@@ -306,11 +380,13 @@ function setupPlayerSlider(total) {
   prev.addEventListener('click', () => {
     playerIndex = (playerIndex - 1 + total) % total;
     updatePlayerSlider();
+    restartPlayerTimer();
   });
 
   next.addEventListener('click', () => {
     playerIndex = (playerIndex + 1) % total;
     updatePlayerSlider();
+    restartPlayerTimer();
   });
 
   let startX = 0;
@@ -325,8 +401,12 @@ function setupPlayerSlider(total) {
         ? (playerIndex - 1 + total) % total
         : (playerIndex + 1) % total;
       updatePlayerSlider();
+      restartPlayerTimer();
     }
   }, { passive: true });
+
+  track.addEventListener('mouseenter', () => clearInterval(playerTimer));
+  track.addEventListener('mouseleave', restartPlayerTimer);
 
   window.addEventListener('resize', updatePlayerSlider);
 }
@@ -350,7 +430,9 @@ async function loadPlayers() {
     grid.innerHTML = players.map(renderPlayerCard).join('');
     highlightChangedStats(players);
     setupPlayerSlider(players.length);
+    renderPlayerDots(players.length);
     updatePlayerSlider();
+    restartPlayerTimer();
   } catch (err) {
     console.error('Could not load player data:', err);
     grid.innerHTML = '<p class="story-empty">Could not load player profiles right now.</p>';
@@ -364,8 +446,12 @@ loadPlayers();
 // ---------------------------------------------------------------------
 const storySlides = [...document.querySelectorAll('.story-slide')];
 const storyDots = document.getElementById('storyDots');
+const storyProgressBar = document.getElementById('storyProgressBar');
 let storyIndex = 0;
+let previousStoryIndex = 0;
 let storyTimer;
+let storyDirection = 'next';
+const STORY_INTERVAL = 6000;
 
 function renderStoryDots() {
   if (!storyDots) return;
@@ -376,7 +462,9 @@ function renderStoryDots() {
 
   storyDots.querySelectorAll('.story-dot').forEach((dot) => {
     dot.addEventListener('click', () => {
-      storyIndex = Number(dot.dataset.index);
+      const nextIndex = Number(dot.dataset.index);
+      storyDirection = nextIndex >= storyIndex ? 'next' : 'prev';
+      storyIndex = nextIndex;
       showStory(storyIndex);
       restartStoryTimer();
     });
@@ -384,28 +472,56 @@ function renderStoryDots() {
 }
 
 function showStory(index) {
-  storySlides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
+  storySlides.forEach((slide) => {
+    slide.classList.remove('active', 'enter-next', 'enter-prev', 'exit-next', 'exit-prev');
   });
+
+  if (storySlides[previousStoryIndex] && previousStoryIndex !== index) {
+    storySlides[previousStoryIndex].classList.add(
+      storyDirection === 'prev' ? 'exit-next' : 'exit-prev'
+    );
+  }
+
+  const active = storySlides[index];
+  if (active) {
+    active.classList.add(
+      'active',
+      storyDirection === 'prev' ? 'enter-prev' : 'enter-next'
+    );
+  }
+
+  previousStoryIndex = index;
 
   storyDots?.querySelectorAll('.story-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === index);
   });
+
+  resetStoryProgress();
+}
+
+function resetStoryProgress() {
+  if (!storyProgressBar) return;
+  storyProgressBar.style.animation = 'none';
+  void storyProgressBar.offsetWidth;
+  storyProgressBar.style.animation = `story-progress-fill ${STORY_INTERVAL}ms linear forwards`;
 }
 
 function nextStory() {
+  storyDirection = 'next';
   storyIndex = (storyIndex + 1) % storySlides.length;
   showStory(storyIndex);
 }
 
 function prevStory() {
+  storyDirection = 'prev';
   storyIndex = (storyIndex - 1 + storySlides.length) % storySlides.length;
   showStory(storyIndex);
 }
 
 function restartStoryTimer() {
   clearInterval(storyTimer);
-  storyTimer = setInterval(nextStory, 5000);
+  resetStoryProgress();
+  storyTimer = setInterval(nextStory, STORY_INTERVAL);
 }
 
 if (storySlides.length) {
@@ -423,8 +539,25 @@ if (storySlides.length) {
     restartStoryTimer();
   });
 
-  document.getElementById('storyCarousel')?.addEventListener('mouseenter', () => clearInterval(storyTimer));
-  document.getElementById('storyCarousel')?.addEventListener('mouseleave', restartStoryTimer);
+  const carousel = document.getElementById('storyCarousel');
+  carousel?.addEventListener('mouseenter', () => {
+    clearInterval(storyTimer);
+    if (storyProgressBar) storyProgressBar.style.animationPlayState = 'paused';
+  });
+  carousel?.addEventListener('mouseleave', restartStoryTimer);
+
+  let storyTouchStart = 0;
+  carousel?.addEventListener('touchstart', (e) => {
+    storyTouchStart = e.touches[0].clientX;
+  }, { passive: true });
+
+  carousel?.addEventListener('touchend', (e) => {
+    const delta = e.changedTouches[0].clientX - storyTouchStart;
+    if (Math.abs(delta) < 45) return;
+    if (delta > 0) prevStory();
+    else nextStory();
+    restartStoryTimer();
+  }, { passive: true });
 }
 
 // Kick off counters on the initially visible tab
