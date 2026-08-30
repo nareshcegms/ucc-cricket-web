@@ -5,6 +5,7 @@ import { ScoreboardWidget } from '@/components/matches/StoryPicker';
 import { PlayerSlider } from '@/components/team/PlayerSlider';
 import {
   getHeroSlides,
+  getLatestClubMatch,
   getPlayers,
   getSiteStats,
 } from '@/lib/data';
@@ -13,6 +14,7 @@ export default function HomePage() {
   const slides = getHeroSlides();
   const players = getPlayers();
   const stats = getSiteStats();
+  const latestMatch = getLatestClubMatch();
 
   return (
     <>
@@ -33,7 +35,7 @@ export default function HomePage() {
               <Link href="/matches/" className="btn btn-ghost">Match stories</Link>
             </div>
           </div>
-          <ScoreboardWidget />
+          <ScoreboardWidget match={latestMatch} />
         </div>
       </section>
 

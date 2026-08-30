@@ -30,7 +30,7 @@
     "matchStoriesBtn": "Match stories",
     "latestResult": "Latest result",
     "final": "Final",
-    "wonBy64": "Won by 64 runs · Avadi OCF",
+    "noResult": "No Udaya CC leather-ball result synced yet.",
     "ppRuns": "PP runs",
     "dineshWkts": "Dinesh wkts",
     "readMatchStory": "Read match story →",
@@ -101,7 +101,9 @@
     "prompt": "Select a match date above to read the story.",
     "empty": "No match stories yet — add one to stories.json after your next game.",
     "error": "Could not load match stories right now.",
-    "leagueMatch": "League Match"
+    "leagueMatch": "League Match",
+    "autoNote": "Auto-written from the synced scorecard — add a manual story in stories.json to replace this.",
+    "viewScorecard": "View full scorecard"
   },
   "history": {
     "eyebrow": "Our History",

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import type { Story } from '@/types';
+import type { ClubMatch, Story } from '@/types';
 import { storyField } from '@/lib/i18n';
 import { useI18n } from '@/components/providers/I18nProvider';
 
@@ -56,14 +56,38 @@ export function StoryPicker({ stories }: { stories: Story[] }) {
               <p key={p.slice(0, 24)} className="mb-4">{p}</p>
             ))}
           </div>
+          {story.auto && (
+            <p className="mt-4 text-sm italic text-ink-soft">{t('stories.autoNote')}</p>
+          )}
+          {story.url && (
+            <a href={story.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm text-ball">
+              {t('stories.viewScorecard')} →
+            </a>
+          )}
         </article>
       )}
     </div>
   );
 }
 
-export function ScoreboardWidget() {
+function clubLabel(name: string) {
+  return /udhaya|udaya\s*cc|udaya cricket/i.test(name) ? 'Udaya CC' : name;
+}
+
+export function ScoreboardWidget({ match }: { match?: ClubMatch }) {
   const { t } = useI18n();
+
+  if (!match) {
+    return (
+      <div className="rounded-lg border border-line bg-willow p-6 text-cream shadow-lg">
+        <span className="eyebrow text-brass">{t('home.latestResult')}</span>
+        <p className="mt-3 text-sm text-cream/80">{t('home.noResult')}</p>
+      </div>
+    );
+  }
+
+  const venue = [match.ground, match.city].filter(Boolean).join(', ');
+
   return (
     <div className="rounded-lg border border-line bg-willow p-6 text-cream shadow-lg">
       <div className="flex items-center justify-between">
@@ -71,11 +95,17 @@ export function ScoreboardWidget() {
         <span className="rounded bg-ball px-2 py-0.5 text-xs">{t('home.final')}</span>
       </div>
       <div className="mt-4 flex items-center justify-between gap-4">
-        <div><div className="text-sm opacity-80">Udaya CC</div><div className="text-3xl font-bold">165/3</div></div>
+        <div>
+          <div className="text-sm opacity-80">{clubLabel(match.team_a)}</div>
+          <div className="text-3xl font-bold">{match.team_a_score || '—'}</div>
+        </div>
         <span className="opacity-60">vs</span>
-        <div className="text-right"><div className="text-sm opacity-80">2025RRCC</div><div className="text-3xl font-bold">101/10</div></div>
+        <div className="text-right">
+          <div className="text-sm opacity-80">{clubLabel(match.team_b)}</div>
+          <div className="text-3xl font-bold">{match.team_b_score || '—'}</div>
+        </div>
       </div>
-      <p className="mt-3 text-sm text-cream/80">{t('home.wonBy64')}</p>
+      <p className="mt-3 text-sm text-cream/80">{[match.result, venue].filter(Boolean).join(' · ')}</p>
       <Link href="/matches/" className="btn btn-primary mt-4 inline-block">{t('home.readMatchStory')}</Link>
     </div>
   );

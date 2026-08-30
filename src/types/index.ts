@@ -52,6 +52,13 @@ export interface Story {
   highlights_ta?: string[];
   paragraphs: string[];
   paragraphs_ta?: string[];
+  match_id?: number;
+  auto?: boolean;
+  url?: string;
+}
+
+export interface ClubMatch extends LeatherMatch {
+  contributions: { name: string; batting: string; bowling: string; awards: string[] }[];
 }
 
 export interface HeroSlide {
