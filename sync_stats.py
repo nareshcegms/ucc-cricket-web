@@ -67,6 +67,19 @@ def stat_value(stats: list[dict], title: str):
     return None
 
 
+def parse_stat(field: str, value):
+    if value is None:
+        return None
+    text = str(value).strip()
+    if text in {"", "-", "—", "N/A", "NA", "null"}:
+        return None
+    if field == "average":
+        return float(text)
+    if field in {"matches", "runs", "wickets"}:
+        return int(float(text))
+    return text
+
+
 def sync_leather_stats(player_id: int) -> dict:
     payload = api_get(f"/player/get-player-statistic/{player_id}?ballType=LEATHER")
     stats = payload.get("data", {}).get("statistics", {})
@@ -76,15 +89,9 @@ def sync_leather_stats(player_id: int) -> dict:
     updated = {}
     for title, field in STAT_TITLE_MAP.items():
         source = batting if title in {"Matches", "Runs", "Avg", "Highest Runs"} else bowling
-        value = stat_value(source, title)
-        if value is None:
-            continue
-        if field == "average":
-            updated[field] = float(value)
-        elif field in {"matches", "runs", "wickets"}:
-            updated[field] = int(value)
-        else:
-            updated[field] = str(value)
+        parsed = parse_stat(field, stat_value(source, title))
+        if parsed is not None:
+            updated[field] = parsed
 
     return updated
 
@@ -236,6 +243,8 @@ def sync_player(player: dict) -> dict:
         print(f"    HTTP error while syncing: {err}")
     except urllib.error.URLError as err:
         print(f"    Network error while syncing: {err}")
+    except (TypeError, ValueError) as err:
+        print(f"    Skipped unreadable stat for {player.get('name')}: {err}")
 
     return player
 

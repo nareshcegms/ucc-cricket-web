@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css" />
 </head>
@@ -23,15 +23,24 @@
       </svg>
       Udaya CC
     </a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
-    <nav class="primary-nav" id="primaryNav">
-      <ul>
-        <li><button class="tab-link active" data-tab="home" type="button">Home</button></li>
-        <li><button class="tab-link" data-tab="players" type="button">Players</button></li>
-        <li><button class="tab-link" data-tab="stories" type="button">Match Stories</button></li>
-        <li><button class="tab-link" data-tab="history" type="button">Our History</button></li>
-      </ul>
-    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button class="lang-btn" type="button" data-lang="ta" aria-pressed="false">தமிழ்</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" data-i18n="nav.menu">Menu</button>
+      <nav class="primary-nav" id="primaryNav">
+        <ul>
+          <li><button class="tab-link active" data-tab="home" type="button" data-i18n="nav.home">Home</button></li>
+          <li><button class="tab-link" data-tab="history" type="button" data-i18n="nav.about">About</button></li>
+          <li><button class="tab-link" data-tab="players" type="button" data-i18n="nav.team">Team</button></li>
+          <li><button class="tab-link" data-tab="stories" type="button" data-i18n="nav.matches">Matches</button></li>
+          <li><button class="tab-link nav-soon" data-tab="home" type="button" data-i18n="nav.gallery">Gallery</button></li>
+          <li><button class="tab-link nav-soon" data-tab="home" type="button" data-i18n="nav.sponsors">Sponsors</button></li>
+          <li><button class="tab-link nav-soon" data-tab="home" type="button" data-i18n="nav.contact">Contact</button></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -39,7 +48,12 @@
 
   <!-- ============ HOME ============ -->
   <div class="tab-panel active" id="tab-home" data-tab="home">
-  <section class="hero hero-themed">
+
+  <section class="hero-slider-wrap" id="heroSlider" aria-label="Featured highlights">
+    <div class="hero-slider-loading">Loading…</div>
+  </section>
+
+  <section class="hero hero-themed hero-below-slider">
     <div class="hero-pitch-pattern" aria-hidden="true"></div>
     <div class="sparkle-field" id="sparkleField" aria-hidden="true"></div>
     <div class="hero-ball" aria-hidden="true">
@@ -51,39 +65,34 @@
     </div>
     <div class="wrap">
       <div class="hero-main">
-        <p class="eyebrow stagger-item">Est. 1999 &middot; Leather-ball cricket &middot; Chennai</p>
-        <h1 class="shimmer-text stagger-item">Twenty-five years<br>on the <em>pitch</em>, together.</h1>
-        <p class="lede stagger-item">Same club colours, same weekend ritual — tea at the boundary, stats on CricHeroes, and stories worth telling after every match.</p>
+        <p class="eyebrow stagger-item" data-i18n="home.eyebrow">Est. 1999 · Leather-ball cricket · Chennai</p>
+        <h1 class="shimmer-text stagger-item" data-i18n-html="home.heroTitle">Twenty-five years<br>on the <em>pitch</em>, together.</h1>
+        <p class="lede stagger-item" data-i18n="home.lede">Same club colours, same weekend ritual — tea at the boundary, stats on CricHeroes, and stories worth telling after every match.</p>
         <div class="hero-actions stagger-item">
-          <button class="btn btn-primary tab-link" data-tab="players" type="button">Squad profiles</button>
-          <button class="btn btn-ghost tab-link" data-tab="stories" type="button">Match stories</button>
+          <button class="btn btn-primary tab-link" data-tab="players" type="button" data-i18n="home.squadProfiles">Squad profiles</button>
+          <button class="btn btn-ghost tab-link" data-tab="stories" type="button" data-i18n="home.matchStoriesBtn">Match stories</button>
         </div>
       </div>
 
-      <div class="scoreboard stagger-item">
+      <div class="scoreboard stagger-item" id="homeScoreboard">
         <div class="scoreboard-head">
-          <span class="scoreboard-label">Latest result</span>
-          <span class="scoreboard-live">Final</span>
+          <span class="scoreboard-label" data-i18n="home.latestResult">Latest result</span>
+          <span class="scoreboard-live" data-i18n="home.final">Final</span>
         </div>
         <div class="scoreboard-teams">
           <div class="scoreboard-team">
-            <span class="team-name">Udaya CC</span>
-            <span class="team-score">165/3</span>
+            <span class="team-name" id="homeTeamAName">Udaya CC</span>
+            <span class="team-score" id="homeTeamAScore">—</span>
           </div>
           <span class="scoreboard-vs">vs</span>
           <div class="scoreboard-team away">
-            <span class="team-name">2025RRCC</span>
-            <span class="team-score">101/10</span>
+            <span class="team-name" id="homeTeamBName">Opposition</span>
+            <span class="team-score" id="homeTeamBScore">—</span>
           </div>
         </div>
-        <p class="scoreboard-result">Won by 64 runs &middot; Avadi OCF</p>
-        <div class="scoreboard-stats">
-          <div class="score-stat"><span class="val">69</span><span class="lab">PP runs</span></div>
-          <div class="score-stat"><span class="val">59</span><span class="lab">Lokesh</span></div>
-          <div class="score-stat"><span class="val">36</span><span class="lab">Naresh</span></div>
-          <div class="score-stat"><span class="val">3</span><span class="lab">Dinesh wkts</span></div>
-        </div>
-        <button class="btn btn-scoreboard tab-link" data-tab="stories" type="button">Read match story →</button>
+        <p class="scoreboard-result" id="homeMatchResult">Loading latest club match…</p>
+        <div class="scoreboard-stats" id="homeMatchStats"></div>
+        <button class="btn btn-scoreboard" id="homeStoryBtn" type="button" data-i18n="home.readMatchStory">Read match story →</button>
       </div>
     </div>
   </section>
@@ -92,22 +101,31 @@
     <div class="wrap home-cards">
       <article class="home-card reveal-up">
         <div class="home-card-icon" aria-hidden="true">🏏</div>
-        <h3>Squad &amp; stats</h3>
-        <p>CricHeroes profiles, leather-ball numbers, and last five performances — synced weekly.</p>
-        <button class="home-card-link tab-link" data-tab="players" type="button">View players</button>
+        <h3 data-i18n="home.cardSquadTitle">Squad &amp; stats</h3>
+        <p data-i18n="home.cardSquadDesc">CricHeroes profiles, leather-ball numbers, and last five performances — synced weekly.</p>
+        <button class="home-card-link tab-link" data-tab="players" type="button" data-i18n="home.cardSquadLink">View players</button>
       </article>
       <article class="home-card reveal-up">
         <div class="home-card-icon" aria-hidden="true">📋</div>
-        <h3>Match stories</h3>
-        <p>Pick a match date and read what happened — batting, bowling, and the full tale.</p>
-        <button class="home-card-link tab-link" data-tab="stories" type="button">Browse by date</button>
+        <h3 data-i18n="home.cardStoriesTitle">Match stories</h3>
+        <p data-i18n="home.cardStoriesDesc">Pick a match date and read what happened — batting, bowling, and the full tale.</p>
+        <button class="home-card-link tab-link" data-tab="stories" type="button" data-i18n="home.cardStoriesLink">Browse by date</button>
       </article>
       <article class="home-card reveal-up">
         <div class="home-card-icon" aria-hidden="true">🏆</div>
-        <h3>Club legacy</h3>
-        <p>Founded 1999 — twenty-five seasons of turning up, same ground, same spirit.</p>
-        <button class="home-card-link tab-link" data-tab="history" type="button">Our history</button>
+        <h3 data-i18n="home.cardLegacyTitle">Club legacy</h3>
+        <p data-i18n="home.cardLegacyDesc">Founded 1999 — twenty-five seasons of turning up, same ground, same spirit.</p>
+        <button class="home-card-link tab-link" data-tab="history" type="button" data-i18n="home.cardLegacyLink">Our history</button>
       </article>
+    </div>
+  </section>
+
+  <section class="home-stats-strip" aria-label="Club statistics">
+    <div class="wrap home-stats-grid">
+      <div class="home-stat reveal-up"><span class="home-stat-val count-up" data-count="25">0</span><span class="home-stat-lab" data-i18n="home.statYears">Years</span></div>
+      <div class="home-stat reveal-up"><span class="home-stat-val count-up" data-count="143">0</span><span class="home-stat-lab" data-i18n="home.statMatches">Matches</span></div>
+      <div class="home-stat reveal-up"><span class="home-stat-val count-up" id="homeSquadCount" data-count="5">0</span><span class="home-stat-lab" data-i18n="home.statPlayers">Players</span></div>
+      <div class="home-stat reveal-up"><span class="home-stat-val" id="homeLatestMargin">—</span><span class="home-stat-lab" data-i18n="home.statLatestWin">Latest margin</span></div>
     </div>
   </section>
   </div>
@@ -118,19 +136,19 @@
   <section class="block" id="players">
     <div class="wrap">
       <div class="block-head reveal-up">
-        <p class="eyebrow">Player Spotlight</p>
-        <h2>Profiles, one player at a time.</h2>
-        <p>We're building this out to mirror the squad's CricHeroes stats — including highest scores, best bowling, and recent leather-ball matches.</p>
+        <p class="eyebrow" data-i18n="players.eyebrow">Player Spotlight</p>
+        <h2 data-i18n="players.title">Profiles, one player at a time.</h2>
+        <p data-i18n="players.desc">We're building this out to mirror the squad's CricHeroes stats — including highest scores, best bowling, and recent leather-ball matches.</p>
       </div>
 
       <div class="player-slider">
-        <button class="slider-btn prev" id="playerPrev" aria-label="Previous player">&#10094;</button>
+        <button class="slider-btn prev" id="playerPrev" aria-label="Previous player" data-i18n-attr="aria-label:players.prev">&#10094;</button>
         <div class="player-track" id="playerTrack">
           <div id="playerGrid" class="player-grid">
-            <p class="story-empty">Loading player profiles…</p>
+            <p class="story-empty" data-i18n="players.loading">Loading player profiles…</p>
           </div>
         </div>
-        <button class="slider-btn next" id="playerNext" aria-label="Next player">&#10095;</button>
+        <button class="slider-btn next" id="playerNext" aria-label="Next player" data-i18n-attr="aria-label:players.next">&#10095;</button>
       </div>
       <div class="slider-dots player-dots" id="playerDots" aria-hidden="true"></div>
 
@@ -144,19 +162,19 @@
   <section class="block" id="stories">
     <div class="wrap">
       <div class="block-head reveal-up">
-        <p class="eyebrow">Match Stories</p>
-        <h2>What happened out there this week.</h2>
-        <p>A short write-up after every match, so anyone who missed it — or missed the match itself — knows how it went.</p>
+        <p class="eyebrow" data-i18n="stories.eyebrow">Match Stories</p>
+        <h2 data-i18n="stories.title">What happened out there this week.</h2>
+        <p data-i18n="stories.desc">A short write-up after every match, so anyone who missed it — or missed the match itself — knows how it went.</p>
       </div>
 
       <div class="story-layout">
         <div class="story-date-bar">
-          <p class="story-dates-label">Match date</p>
+          <p class="story-dates-label" data-i18n="stories.matchDate">Match date</p>
           <ul class="story-date-pills" id="storyDateList"></ul>
         </div>
 
         <div class="story-detail" id="storyDetail">
-          <p class="story-prompt">Select a match date above to read the story.</p>
+          <p class="story-prompt" data-i18n="stories.prompt">Select a match date above to read the story.</p>
         </div>
       </div>
     </div>
@@ -169,15 +187,15 @@
   <section class="block" id="legacy">
     <div class="wrap legacy">
       <div class="reveal-up">
-        <p class="eyebrow">Our History</p>
-        <h2>Same club, twenty-five years running.</h2>
-        <p>Udaya Cricket Club started with a handful of players and a borrowed ground, and has kept turning up every season since. This section is a placeholder for the club's real story — founding year, notable seasons, and how it's grown. Replace this copy with your own history.</p>
+        <p class="eyebrow" data-i18n="history.eyebrow">Our History</p>
+        <h2 data-i18n="history.title">Same club, twenty-five years running.</h2>
+        <p data-i18n="history.desc">Udaya Cricket Club started with a handful of players and a borrowed ground, and has kept turning up every season since. This section is a placeholder for the club's real story — founding year, notable seasons, and how it's grown. Replace this copy with your own history.</p>
       </div>
       <div class="ledger cascade-list">
-        <div class="ledger-row cascade-item"><span>Founded</span><span class="count-up" data-count="1999">0</span></div>
-        <div class="ledger-row cascade-item"><span>Seasons played</span><span class="count-up" data-count="25">0</span></div>
-        <div class="ledger-row cascade-item"><span>Home ground</span><span>Udaya Ground</span></div>
-        <div class="ledger-row cascade-item"><span>Squad size</span><span class="count-up" data-count="18">0</span></div>
+        <div class="ledger-row cascade-item"><span data-i18n="history.founded">Founded</span><span class="count-up" data-count="1999">0</span></div>
+        <div class="ledger-row cascade-item"><span data-i18n="history.seasons">Seasons played</span><span class="count-up" data-count="25">0</span></div>
+        <div class="ledger-row cascade-item"><span data-i18n="history.ground">Home ground</span><span data-i18n="history.groundName">Udaya Ground</span></div>
+        <div class="ledger-row cascade-item"><span data-i18n="history.squad">Squad size</span><span class="count-up" data-count="18">0</span></div>
       </div>
     </div>
   </section>
@@ -189,12 +207,18 @@
   <div class="wrap">
     <div>
       <div class="brand-line">Udaya CC</div>
-      <div class="fine-print">Built by the club, for the club — 25 years and counting.</div>
+      <div class="fine-print" data-i18n="footer.tagline">Built by the club, for the club — 25 years and counting.</div>
     </div>
-    <div class="fine-print">&copy; 2026 Udaya Cricket Club</div>
+    <div class="fine-print" data-i18n="footer.copyright">&copy; 2026 Udaya Cricket Club</div>
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="i18n.js"></script>
+<script src="home-slider.js"></script>
 <script src="script.js"></script>
+<script src="players-ui.js"></script>
 </body>
 </html>

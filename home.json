@@ -1,0 +1,70 @@
+{
+  "slides": [
+    {
+      "id": "welcome",
+      "title_en": "Welcome to Udaya Cricket Club",
+      "title_ta": "உதயா கிரிக்கெட் கிளப்-க்கு வரவேற்கிறோம்",
+      "subtitle_en": "Twenty-five years on the pitch — same ground, same spirit, same fight.",
+      "subtitle_ta": "இருபத்தைந்து ஆண்டுகள் ground-ில் — அதே spirit, அதே போராட்டம்.",
+      "cta_en": "Explore the club",
+      "cta_ta": "Club-ஐ explore செய்",
+      "ctaTab": "home",
+      "theme": "willow"
+    },
+    {
+      "id": "join",
+      "title_en": "Join Our Team",
+      "title_ta": "எங்கள் அணியில் சேருங்கள்",
+      "subtitle_en": "Weekend leather-ball cricket in Chennai — all skill levels welcome.",
+      "subtitle_ta": "சென்னை weekend leather-ball cricket — அனைத்து levels-க்கும் welcome.",
+      "cta_en": "View squad",
+      "cta_ta": "அணியைப் பார்",
+      "ctaTab": "players",
+      "theme": "sunset"
+    },
+    {
+      "id": "champions",
+      "title_en": "Tournament Champions",
+      "title_ta": "Tournament Champions",
+      "subtitle_en": "Dominant wins, fiery innings, and memories that last all week.",
+      "subtitle_ta": "Dominant wins, fiery innings — வாரம் முழுவதும் நினைவுகள்.",
+      "cta_en": "Read match stories",
+      "cta_ta": "போட்டி கதைகள்",
+      "ctaTab": "stories",
+      "theme": "gold"
+    },
+    {
+      "id": "upcoming",
+      "title_en": "Upcoming Matches",
+      "title_ta": "வர upcoming போட்டிகள்",
+      "subtitle_en": "Next fixture loading — check back after the weekend squad meeting.",
+      "subtitle_ta": "அடுத்த போட்டி விரைவில் — weekend squad meeting-க்குப் பிறகு பாருங்கள்.",
+      "cta_en": "Latest result",
+      "cta_ta": "சமீபத்திய முடிவு",
+      "ctaTab": "home",
+      "theme": "night"
+    },
+    {
+      "id": "academy",
+      "title_en": "Academy Registrations",
+      "title_ta": "Academy பதிவு",
+      "subtitle_en": "Building the next generation of Udaya CC — nets, mentors, and match time.",
+      "subtitle_ta": "அடுத்த generation Udaya CC — nets, mentors, match time.",
+      "cta_en": "Our history",
+      "cta_ta": "எங்கள் வரலாறு",
+      "ctaTab": "history",
+      "theme": "dawn"
+    },
+    {
+      "id": "sponsor",
+      "title_en": "Become a Sponsor",
+      "title_ta": "Sponsor ஆகுங்கள்",
+      "subtitle_en": "Partner with a club that's been turning up since 1999.",
+      "subtitle_ta": "1999 முதல் turn up செய்யும் club-உடன் partner ஆகுங்கள்.",
+      "cta_en": "Get in touch",
+      "cta_ta": "தொடர்பு கொள்ளுங்கள்",
+      "ctaTab": "history",
+      "theme": "brass"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f1ead9;
+  --color-paper: #fbf7ef;
+  --color-ink: #23201b;
+  --color-ink-soft: #5b5548;
+  --color-willow: #1f3a2e;
+  --color-willow-light: #2e5240;
+  --color-ball: #a3273a;
+  --color-brass: #b08d57;
+  --color-line: #dcd2bc;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    @apply text-willow font-semibold;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-[1080px] px-7;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    @apply text-[0.72rem] uppercase tracking-[0.14em] text-ball;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded px-5 py-2.5 text-sm font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-ball text-cream hover:-translate-y-0.5 hover:bg-[#8a2131];
+  }
+
+  .btn-ghost {
+    @apply border border-line bg-paper text-willow hover:border-ball hover:text-ball;
+  }
+
+  .slider-btn {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line bg-paper text-lg text-willow transition hover:bg-willow hover:text-cream;
+  }
+
+  .section-block {
+    @apply py-16 md:py-20;
+  }
+}

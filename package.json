@@ -1,0 +1,48 @@
+{
+  "name": "ucc-cricekt-web",
+  "version": "1.0.0",
+  "description": "A starter website for your cricket club: hero section, player profiles (loaded from a data file), a weekly match-story feed, and a short club history section. Player stats can sync automatically from CricHeroes.",
+  "main": "home-slider.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "build:static": "cross-env NEXT_OUTPUT=export next build",
+    "build:gh-pages": "cross-env NEXT_OUTPUT=export NEXT_PUBLIC_BASE_PATH=/ucc-cricket-web next build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nareshcegms/ucc-cricket-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nareshcegms/ucc-cricket-web/issues"
+  },
+  "homepage": "https://github.com/nareshcegms/ucc-cricket-web#readme",
+  "dependencies": {
+    "@hookform/resolvers": "^5.5.7",
+    "cross-env": "^10.1.0",
+    "firebase": "^12.16.0",
+    "framer-motion": "^12.43.0",
+    "next": "^15.5.22",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-hook-form": "^7.83.0",
+    "recharts": "^3.10.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.2.12",
+    "postcss": "^8.5.24",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3"
+  }
+}

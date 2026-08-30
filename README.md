@@ -1,83 +1,94 @@
-# Riverside CC — Team Website
+# Udaya Cricket Club — Next.js Website
 
-A starter website for your cricket club: hero section, player profiles
-(loaded from a data file), a weekly match-story feed, and a short club
-history section. Player stats can sync automatically from CricHeroes.
+Modern club website built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**. Content is driven by JSON files (CMS-style) with optional **Firebase** admin and weekly **CricHeroes** stat sync.
 
-## Files
+Live: [nareshcegms.github.io/ucc-cricket-web](https://nareshcegms.github.io/ucc-cricket-web/)
 
-- `index.html` — the page itself
-- `styles.css` — all styling (colors, fonts, layout)
-- `script.js` — mobile menu + loads player profiles from `data/players.json`
-- `data/players.json` — player names, bios, stats, and CricHeroes profile URLs
-- `scripts/sync_stats.py` — scrapes CricHeroes profile pages and updates `data/players.json`
-- `.github/workflows/sync-stats.yml` — runs the sync script weekly via GitHub Actions
+## Quick start
 
-## Viewing it locally
-
-Because the page now fetches `data/players.json` with JavaScript, opening
-`index.html` directly by double-clicking it won't load the player cards
-(browsers block that for local files). Instead, run a tiny local server
-from inside the folder:
-
-```
-python3 -m http.server 8000
+```bash
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8000` in your browser. This isn't needed once
-it's hosted on GitHub Pages — it'll work normally there.
+Open [http://localhost:3000](http://localhost:3000)
 
-## What to personalize first
+## Phases implemented
 
-1. **Club name & tagline** — search `index.html` for "Riverside" and the
-   hero heading/lede text near the top of `<body>`.
-2. **Player profiles** — edit `data/players.json`. Add one object per
-   player: `name`, `team`, `role`, `bio`, `matches`, `runs`, `wickets`,
-   `average`. Leave `cricheroes_url` empty until you're ready to enable
-   auto-sync for that player (see below).
-3. **This week's story** — in the `#stories` section of `index.html`,
-   replace the sample story's headline and paragraph.
-4. **Club history** — in the `#legacy` section, update the founding year,
-   home ground, and squad size.
+| Phase | Features |
+|-------|----------|
+| **2** | Gallery (`gallery.json`), Sponsors (`sponsors.json`), Contact (`contact.json`), live stats (`site-stats.json`) |
+| **3** | Next.js App Router, `/players/[id]` profile pages with Recharts, EN/தமிழ் i18n, Framer Motion animations |
+| **4** | `/admin` dashboard, Firebase hookup (`.env.example`), PWA manifest + service worker |
 
-## Turning on automatic stat syncing
+## Routes
 
-1. Find your public CricHeroes profile URL (open your profile in the app,
-   tap the share icon, copy the link — or grab it from cricheroes.com in
-   a browser).
-2. Paste it into the matching player's `cricheroes_url` field in
-   `data/players.json`.
-3. Commit and push. The GitHub Action (`.github/workflows/sync-stats.yml`)
-   runs every Monday automatically, or you can trigger it manually any
-   time from your repo's **Actions** tab → "Sync CricHeroes stats" →
-   **Run workflow**.
-4. It'll open your profile page, read off Matches / Runs / Wickets /
-   Average, update `data/players.json`, and commit the change — so the
-   live site picks it up automatically.
+| Path | Description |
+|------|-------------|
+| `/` | Hero slider, scoreboard, live stats, player spotlight |
+| `/team/` | Full squad slider + grid |
+| `/players/[id]/` | Individual profile, charts, match history |
+| `/matches/` | Match stories by date |
+| `/gallery/` | Masonry gallery with filters & lightbox |
+| `/sponsors/` | Logo slider, sponsor cards, testimonials |
+| `/contact/` | Inquiry form, membership plans, map |
+| `/about/` | Club history & stats |
+| `/admin/` | CMS dashboard (Firebase or JSON editing guide) |
 
-**Please read before relying on this:** CricHeroes has no official public
-API. This sync works by loading your public profile page and reading the
-numbers off it, the same way a person would — it's not officially
-supported, so:
-- It only works if your CricHeroes profile is set to public.
-- If CricHeroes redesigns their page, the script may need a small update
-  (details are in the comments at the top of `scripts/sync_stats.py`).
-- Weekly is a reasonable schedule — there's no need to run it more often,
-  and doing so is more likely to trip anti-bot protections.
+## Content files (edit these)
 
-## Hosting it for free
+| File | Purpose |
+|------|---------|
+| `players.json` | Squad profiles — synced from CricHeroes weekly |
+| `stories.json` | Match write-ups (EN + TA) |
+| `home.json` | Homepage hero slider slides |
+| `gallery.json` | Gallery images & categories |
+| `sponsors.json` | Sponsors & testimonials |
+| `contact.json` | Contact details, membership plans |
+| `site-stats.json` | Animated counter stats on homepage |
 
-- **GitHub Pages** — push this folder to a GitHub repo, enable Pages in
-  the repo settings, done. The scheduled sync will keep committing
-  updates automatically once set up.
-- **Netlify / Vercel** — drag-and-drop this folder onto their dashboard
-  for an instant live URL (you'd still use the GitHub Action for syncing,
-  since that needs a git repo to commit into).
+## CricHeroes auto-sync
 
-## Next steps
+The GitHub Action `.github/workflows/sync-stats.yml` runs `sync_stats.py` weekly and commits updates to `players.json`.
 
-- Add more players by adding more objects to the `players` array in
-  `data/players.json` — no HTML editing needed.
-- Add more story cards by duplicating a `.story-card` block in
-  `index.html`.
+1. Add each player's public CricHeroes URL to `players.json`
+2. Push to `main` — sync runs every Monday (or trigger manually in Actions)
 
+## Firebase admin (Phase 4)
+
+1. Copy `.env.example` → `.env.local`
+2. Add your Firebase project keys from [Firebase Console](https://console.firebase.google.com/)
+3. Enable Email/Password auth and Firestore
+4. Visit `/admin/` to sign in and save CMS drafts to Firestore
+
+Without Firebase, edit the JSON files above and push — the site rebuilds automatically.
+
+## Deploy
+
+### GitHub Pages (static export)
+
+1. Repo **Settings → Pages → Source: GitHub Actions**
+2. Push to `main` — workflow `.github/workflows/deploy-next.yml` builds and deploys
+
+Local static build:
+
+```bash
+npm run build:gh-pages
+```
+
+Output is in `out/` (base path `/ucc-cricket-web`).
+
+### Vercel (recommended for admin + SSR)
+
+Connect the repo at [vercel.com](https://vercel.com) — no base path needed. Set Firebase env vars in the Vercel dashboard.
+
+## Legacy static site
+
+The original `index.html` / `script.js` / `styles.css` files remain in the repo root for reference. The Next.js app replaces them when deployed via GitHub Actions.
+
+## Tech stack
+
+- Next.js 15 (App Router) · React 19 · TypeScript
+- Tailwind CSS 4 · Framer Motion · Recharts
+- React Hook Form · Zod · Firebase (optional)
+- PWA manifest + service worker

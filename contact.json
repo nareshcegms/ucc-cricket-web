@@ -1,0 +1,33 @@
+{
+  "email": "udayacricketclub@gmail.com",
+  "phone": "+91 98765 43210",
+  "whatsapp": "+91 98765 43210",
+  "address_en": "Udaya Ground, Chennai, Tamil Nadu",
+  "address_ta": "உதயா Ground, Chennai, Tamil Nadu",
+  "map_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d80.2!3d13.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAwJzAwLjAiTiA4MMKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1",
+  "social": {
+    "instagram": "https://instagram.com",
+    "facebook": "https://facebook.com",
+    "youtube": "https://youtube.com"
+  },
+  "membership_plans": [
+    {
+      "id": "player",
+      "name_en": "Player",
+      "name_ta": "Player",
+      "price_en": "₹2,500 / season",
+      "price_ta": "₹2,500 / season",
+      "benefits_en": ["Match access", "CricHeroes profile", "Club kit discount"],
+      "benefits_ta": ["Match access", "CricHeroes profile", "Club kit discount"]
+    },
+    {
+      "id": "supporter",
+      "name_en": "Supporter",
+      "name_ta": "Supporter",
+      "price_en": "₹500 / year",
+      "price_ta": "₹500 / year",
+      "benefits_en": ["Newsletter", "Match invites", "Club events"],
+      "benefits_ta": ["Newsletter", "Match invites", "Club events"]
+    }
+  ]
+}

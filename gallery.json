@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "g1",
+      "category": "matches",
+      "title_en": "Victory at Avadi OCF",
+      "title_ta": "Avadi OCF-ல் வெற்றி",
+      "caption_en": "Udaya CC celebrate a dominant 64-run win — 26 Jul 2026.",
+      "caption_ta": "Udaya CC 64-run dominant win — 26 Jul 2026.",
+      "image": "https://images.unsplash.com/photo-1531415071318-de6869b81a77?w=800&q=80",
+      "date": "2026-07-26"
+    },
+    {
+      "id": "g2",
+      "category": "practice",
+      "title_en": "Nets session",
+      "title_ta": "Nets session",
+      "caption_en": "Evening leather-ball nets at the club ground.",
+      "caption_ta": "Club ground-ல் evening leather-ball nets.",
+      "image": "https://images.unsplash.com/photo-1624526267662-18078aa6a6b3?w=800&q=80",
+      "date": "2026-07-20"
+    },
+    {
+      "id": "g3",
+      "category": "events",
+      "title_en": "Club anniversary",
+      "title_ta": "Club anniversary",
+      "caption_en": "Twenty-five years of Udaya CC — same ground, same spirit.",
+      "caption_ta": "உதயா CC இருபத்தைந்து ஆண்டுகள்.",
+      "image": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&q=80",
+      "date": "2026-06-15"
+    },
+    {
+      "id": "g4",
+      "category": "celebrations",
+      "title_en": "Post-match tea",
+      "title_ta": "Post-match tea",
+      "caption_en": "Boundary-side chai and scorecard debates.",
+      "caption_ta": "Boundary-side chai மற்றும் scorecard debates.",
+      "image": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80",
+      "date": "2026-07-26"
+    },
+    {
+      "id": "g5",
+      "category": "awards",
+      "title_en": "Player of the match",
+      "title_ta": "Player of the match",
+      "caption_en": "Lokesh's 59 sets the tone in the powerplay.",
+      "caption_ta": "Lokesh-ன் 59 powerplay-ல் tone set.",
+      "image": "https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=800&q=80",
+      "date": "2026-07-26"
+    },
+    {
+      "id": "g6",
+      "category": "matches",
+      "title_en": "Bowling attack",
+      "title_ta": "Bowling attack",
+      "caption_en": "Dinesh finishes with three wickets.",
+      "caption_ta": "Dinesh மூன்று wickets.",
+      "image": "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=800&q=80",
+      "date": "2026-07-26"
+    }
+  ]
+}

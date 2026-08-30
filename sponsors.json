@@ -1,0 +1,49 @@
+{
+  "sponsors": [
+    {
+      "id": "s1",
+      "name": "Local Sports Shop",
+      "tier": "gold",
+      "logo": "https://images.unsplash.com/photo-1560472354-b33ff0f44?w=200&q=80",
+      "website": "#",
+      "tagline_en": "Official kit partner",
+      "tagline_ta": "Official kit partner"
+    },
+    {
+      "id": "s2",
+      "name": "Chennai Cricket Academy",
+      "tier": "silver",
+      "logo": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=200&q=80",
+      "website": "#",
+      "tagline_en": "Training & nets support",
+      "tagline_ta": "Training & nets support"
+    },
+    {
+      "id": "s3",
+      "name": "Community Ground Co.",
+      "tier": "bronze",
+      "logo": "https://images.unsplash.com/photo-1531415071318-de6869b81a77?w=200&q=80",
+      "website": "#",
+      "tagline_en": "Ground facilities partner",
+      "tagline_ta": "Ground facilities partner"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "t1",
+      "author": "Club Captain",
+      "role_en": "Player review",
+      "role_ta": "Player review",
+      "quote_en": "Twenty-five years and we still turn up every weekend — that's Udaya CC.",
+      "quote_ta": "இருபத்தைந்து ஆண்டுகள் — ஒவ்வொரு weekend-யும் turn up, அதுதான் Udaya CC."
+    },
+    {
+      "id": "t2",
+      "author": "Head Coach",
+      "role_en": "Coach review",
+      "role_ta": "Coach review",
+      "quote_en": "Leather-ball cricket with real stats and real stories — the squad keeps improving.",
+      "quote_ta": "Real stats, real stories — squad keep improving."
+    }
+  ]
+}
