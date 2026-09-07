@@ -7,14 +7,32 @@
       "role": "All-rounder",
       "bio": "Plays for Udhaya Cricket Club \u2014 leather-ball stats only, synced from CricHeroes.",
       "cricheroes_url": "https://cricheroes.com/player-profile/15472519/naresh-dhanasekaran",
-      "matches": 148,
-      "runs": 3552,
+      "matches": 149,
+      "runs": 3574,
       "wickets": 94,
-      "average": 27.11,
+      "average": 27.08,
       "highest_score": "131*",
       "best_bowling": "4/10",
-      "last_synced": "2026-08-31T12:26:02Z",
+      "last_synced": "2026-09-07T11:20:28Z",
       "leather_matches": [
+        {
+          "id": 27000810,
+          "date": "2026-09-06T05:04:00.000Z",
+          "ground": "Mh Ground",
+          "city": "Avadi",
+          "overs": 20,
+          "tournament": "Individual Match",
+          "team_a": "Udhaya Cricket Club",
+          "team_b": "K.C.C. Avadi - MH",
+          "team_a_score": "171/6",
+          "team_b_score": "135/9",
+          "result": "Udhaya Cricket Club won by 36 runs",
+          "ball_type": "LEATHER",
+          "url": "https://cricheroes.com/scorecard/27000810",
+          "batting": "22 (23)",
+          "bowling": "Did not bowl",
+          "awards": []
+        },
         {
           "id": 26896109,
           "date": "2026-08-30T09:48:58.000Z",
@@ -86,24 +104,6 @@
           "batting": "16 (26)",
           "bowling": "0/25 (2 ov)",
           "awards": []
-        },
-        {
-          "id": 26278814,
-          "date": "2026-08-01T05:30:24.000Z",
-          "ground": "Sindhi college - SPL Ground",
-          "city": "Chennai",
-          "overs": 22,
-          "tournament": "VK T22 League S-5",
-          "team_a": "White Walkers",
-          "team_b": "Classic CC (Madras)",
-          "team_a_score": "146/10",
-          "team_b_score": "96/10",
-          "result": "White Walkers won by 50 runs",
-          "ball_type": "LEATHER",
-          "url": "https://cricheroes.com/scorecard/26278814",
-          "batting": "8",
-          "bowling": "0/8 (1 ov)",
-          "awards": []
         }
       ]
     },
@@ -114,14 +114,32 @@
       "role": "Batsman",
       "bio": "Plays for Udhaya Cricket Club \u2014 leather-ball stats only, synced from CricHeroes.",
       "cricheroes_url": "https://cricheroes.com/player-profile/16241754/murthy",
-      "matches": 91,
-      "runs": 2009,
+      "matches": 92,
+      "runs": 2049,
       "wickets": 34,
-      "average": 27.52,
+      "average": 28.07,
       "highest_score": "82*",
       "best_bowling": "3/11",
-      "last_synced": "2026-08-31T12:26:09Z",
+      "last_synced": "2026-09-07T11:20:34Z",
       "leather_matches": [
+        {
+          "id": 27000810,
+          "date": "2026-09-06T05:04:00.000Z",
+          "ground": "Mh Ground",
+          "city": "Avadi",
+          "overs": 20,
+          "tournament": "Individual Match",
+          "team_a": "Udhaya Cricket Club",
+          "team_b": "K.C.C. Avadi - MH",
+          "team_a_score": "171/6",
+          "team_b_score": "135/9",
+          "result": "Udhaya Cricket Club won by 36 runs",
+          "ball_type": "LEATHER",
+          "url": "https://cricheroes.com/scorecard/27000810",
+          "batting": "40* (28)",
+          "bowling": "Did not bowl",
+          "awards": []
+        },
         {
           "id": 26896109,
           "date": "2026-08-30T09:48:58.000Z",
@@ -197,24 +215,6 @@
           "batting": "8",
           "bowling": "0/8 (1 ov)",
           "awards": []
-        },
-        {
-          "id": 25999101,
-          "date": "2026-07-12T09:01:00.000Z",
-          "ground": "Ocf Ground",
-          "city": "Avadi",
-          "overs": 20,
-          "tournament": "Individual Match",
-          "team_a": "Udhaya Cricket Club",
-          "team_b": "OCF 11",
-          "team_a_score": "123/6",
-          "team_b_score": "124/0",
-          "result": "OCF 11 won by 10 wickets",
-          "ball_type": "LEATHER",
-          "url": "https://cricheroes.com/scorecard/25999101",
-          "batting": "19",
-          "bowling": "0/19 (2.5 ov)",
-          "awards": []
         }
       ]
     },
@@ -231,7 +231,7 @@
       "average": 17.13,
       "highest_score": "54*",
       "best_bowling": "0/4",
-      "last_synced": "2026-08-31T12:26:11Z",
+      "last_synced": "2026-09-07T11:20:37Z",
       "leather_matches": [
         {
           "id": 26781218,
@@ -338,7 +338,7 @@
       "average": 6.92,
       "highest_score": "30",
       "best_bowling": "2/14",
-      "last_synced": "2026-08-31T12:26:13Z",
+      "last_synced": "2026-09-07T11:20:40Z",
       "leather_matches": [
         {
           "id": 26781218,
@@ -445,7 +445,7 @@
       "average": 14.67,
       "highest_score": "20*",
       "best_bowling": "2/11",
-      "last_synced": "2026-08-31T12:26:15Z",
+      "last_synced": "2026-09-07T11:20:42Z",
       "leather_matches": [
         {
           "id": 26896109,
@@ -552,7 +552,7 @@
       "average": 12.44,
       "highest_score": "36*",
       "best_bowling": "4/22",
-      "last_synced": "2026-08-31T12:26:18Z",
+      "last_synced": "2026-09-07T11:20:45Z",
       "leather_matches": [
         {
           "id": 26781218,
@@ -653,14 +653,32 @@
       "role": "All-rounder",
       "bio": "Plays for Udhaya Cricket Club \u2014 leather-ball stats only, synced from CricHeroes.",
       "cricheroes_url": "https://cricheroes.com/player-profile/8948065/saravanan-ucc",
-      "matches": 104,
+      "matches": 105,
       "runs": 305,
-      "wickets": 90,
+      "wickets": 91,
       "average": 10.89,
       "highest_score": "31*",
       "best_bowling": "3/11",
-      "last_synced": "2026-08-31T12:26:20Z",
+      "last_synced": "2026-09-07T11:20:48Z",
       "leather_matches": [
+        {
+          "id": 27000810,
+          "date": "2026-09-06T05:04:00.000Z",
+          "ground": "Mh Ground",
+          "city": "Avadi",
+          "overs": 20,
+          "tournament": "Individual Match",
+          "team_a": "Udhaya Cricket Club",
+          "team_b": "K.C.C. Avadi - MH",
+          "team_a_score": "171/6",
+          "team_b_score": "135/9",
+          "result": "Udhaya Cricket Club won by 36 runs",
+          "ball_type": "LEATHER",
+          "url": "https://cricheroes.com/scorecard/27000810",
+          "batting": "16",
+          "bowling": "1/16 (3 ov)",
+          "awards": []
+        },
         {
           "id": 26896109,
           "date": "2026-08-30T09:48:58.000Z",
@@ -733,24 +751,6 @@
           "url": "https://cricheroes.com/scorecard/25999101",
           "batting": "17",
           "bowling": "0/17 (3 ov)",
-          "awards": []
-        },
-        {
-          "id": 25738458,
-          "date": "2026-06-28T04:42:00.000Z",
-          "ground": "Ocf Ground",
-          "city": "Avadi",
-          "overs": 20,
-          "tournament": "Individual Match",
-          "team_a": "Badmash Cricket Team Avadi",
-          "team_b": "Udhaya Cricket Club",
-          "team_a_score": "104/7",
-          "team_b_score": "105/2",
-          "result": "Udhaya Cricket Club won by 6 wickets",
-          "ball_type": "LEATHER",
-          "url": "https://cricheroes.com/scorecard/25738458",
-          "batting": "21 (24)",
-          "bowling": "2/21 (4 ov)",
           "awards": []
         }
       ]
