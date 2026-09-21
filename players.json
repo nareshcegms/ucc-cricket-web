@@ -7,14 +7,32 @@
       "role": "All-rounder",
       "bio": "Plays for Udhaya Cricket Club \u2014 leather-ball stats only, synced from CricHeroes.",
       "cricheroes_url": "https://cricheroes.com/player-profile/15472519/naresh-dhanasekaran",
-      "matches": 149,
-      "runs": 3574,
+      "matches": 150,
+      "runs": 3581,
       "wickets": 94,
-      "average": 27.08,
+      "average": 26.92,
       "highest_score": "131*",
       "best_bowling": "4/10",
-      "last_synced": "2026-09-14T11:30:30Z",
+      "last_synced": "2026-09-21T11:44:26Z",
       "leather_matches": [
+        {
+          "id": 27152552,
+          "date": "2026-09-20T05:07:35.000Z",
+          "ground": "St. Peters Ground",
+          "city": "Chennai",
+          "overs": 18,
+          "tournament": "KCC SELECT MINI TOURNAMENT - 7",
+          "team_a": "Udhaya Cricket Club",
+          "team_b": "KCC SELECT",
+          "team_a_score": "114/5",
+          "team_b_score": "115/6",
+          "result": "KCC SELECT won by 4 wickets",
+          "ball_type": "LEATHER",
+          "url": "https://cricheroes.com/scorecard/27152552",
+          "batting": "7 (4)",
+          "bowling": "Did not bowl",
+          "awards": []
+        },
         {
           "id": 27000810,
           "date": "2026-09-06T05:04:00.000Z",
@@ -86,24 +104,6 @@
           "batting": "6 (11)",
           "bowling": "Did not bowl",
           "awards": []
-        },
-        {
-          "id": 26430650,
-          "date": "2026-08-02T05:17:52.000Z",
-          "ground": "Avadi Mh Ground",
-          "city": "Chennai",
-          "overs": 20,
-          "tournament": "Individual Match",
-          "team_a": "K.C.C. Avadi - MH",
-          "team_b": "Udhaya Cricket Club",
-          "team_a_score": "174/4",
-          "team_b_score": "165/6",
-          "result": "K.C.C. Avadi - MH won by 9 runs",
-          "ball_type": "LEATHER",
-          "url": "https://cricheroes.com/scorecard/26430650",
-          "batting": "16 (26)",
-          "bowling": "0/25 (2 ov)",
-          "awards": []
         }
       ]
     },
@@ -120,7 +120,7 @@
       "average": 28.07,
       "highest_score": "82*",
       "best_bowling": "3/11",
-      "last_synced": "2026-09-14T11:30:35Z",
+      "last_synced": "2026-09-21T11:44:31Z",
       "leather_matches": [
         {
           "id": 27000810,
@@ -231,7 +231,7 @@
       "average": 17.13,
       "highest_score": "54*",
       "best_bowling": "0/4",
-      "last_synced": "2026-09-14T11:30:38Z",
+      "last_synced": "2026-09-21T11:44:34Z",
       "leather_matches": [
         {
           "id": 26781218,
@@ -338,7 +338,7 @@
       "average": 6.92,
       "highest_score": "30",
       "best_bowling": "2/14",
-      "last_synced": "2026-09-14T11:30:41Z",
+      "last_synced": "2026-09-21T11:44:37Z",
       "leather_matches": [
         {
           "id": 26781218,
@@ -445,7 +445,7 @@
       "average": 14.67,
       "highest_score": "20*",
       "best_bowling": "2/11",
-      "last_synced": "2026-09-14T11:30:43Z",
+      "last_synced": "2026-09-21T11:44:40Z",
       "leather_matches": [
         {
           "id": 26896109,
@@ -546,14 +546,32 @@
       "role": "All-rounder",
       "bio": "Plays for Udhaya Cricket Club \u2014 leather-ball stats only, synced from CricHeroes.",
       "cricheroes_url": "https://cricheroes.com/player-profile/22758369/kamal",
-      "matches": 70,
+      "matches": 71,
       "runs": 448,
       "wickets": 6,
       "average": 12.44,
       "highest_score": "36*",
       "best_bowling": "4/22",
-      "last_synced": "2026-09-14T11:30:46Z",
+      "last_synced": "2026-09-21T11:44:42Z",
       "leather_matches": [
+        {
+          "id": 27152552,
+          "date": "2026-09-20T05:07:35.000Z",
+          "ground": "St. Peters Ground",
+          "city": "Chennai",
+          "overs": 18,
+          "tournament": "KCC SELECT MINI TOURNAMENT - 7",
+          "team_a": "Udhaya Cricket Club",
+          "team_b": "KCC SELECT",
+          "team_a_score": "114/5",
+          "team_b_score": "115/6",
+          "result": "KCC SELECT won by 4 wickets",
+          "ball_type": "LEATHER",
+          "url": "https://cricheroes.com/scorecard/27152552",
+          "batting": "Did not bat",
+          "bowling": "Did not bowl",
+          "awards": []
+        },
         {
           "id": 26781218,
           "date": "2026-08-23T09:14:00.000Z",
@@ -625,24 +643,6 @@
           "batting": "Did not bat",
           "bowling": "Did not bowl",
           "awards": []
-        },
-        {
-          "id": 24794965,
-          "date": "2026-05-17T05:16:07.000Z",
-          "ground": "Mh Ground",
-          "city": "Avadi",
-          "overs": 20,
-          "tournament": "Individual Match",
-          "team_a": "Udhaya Cricket Club",
-          "team_b": "K.C.C. Avadi - MH",
-          "team_a_score": "180/7",
-          "team_b_score": "184/5",
-          "result": "K.C.C. Avadi - MH won by 5 wickets",
-          "ball_type": "LEATHER",
-          "url": "https://cricheroes.com/scorecard/24794965",
-          "batting": "Did not bat",
-          "bowling": "Did not bowl",
-          "awards": []
         }
       ]
     },
@@ -653,14 +653,32 @@
       "role": "All-rounder",
       "bio": "Plays for Udhaya Cricket Club \u2014 leather-ball stats only, synced from CricHeroes.",
       "cricheroes_url": "https://cricheroes.com/player-profile/8948065/saravanan-ucc",
-      "matches": 105,
+      "matches": 106,
       "runs": 305,
       "wickets": 91,
       "average": 10.89,
       "highest_score": "31*",
       "best_bowling": "3/11",
-      "last_synced": "2026-09-14T11:30:51Z",
+      "last_synced": "2026-09-21T11:44:45Z",
       "leather_matches": [
+        {
+          "id": 27152552,
+          "date": "2026-09-20T05:07:35.000Z",
+          "ground": "St. Peters Ground",
+          "city": "Chennai",
+          "overs": 18,
+          "tournament": "KCC SELECT MINI TOURNAMENT - 7",
+          "team_a": "Udhaya Cricket Club",
+          "team_b": "KCC SELECT",
+          "team_a_score": "114/5",
+          "team_b_score": "115/6",
+          "result": "KCC SELECT won by 4 wickets",
+          "ball_type": "LEATHER",
+          "url": "https://cricheroes.com/scorecard/27152552",
+          "batting": "Did not bat",
+          "bowling": "Did not bowl",
+          "awards": []
+        },
         {
           "id": 27000810,
           "date": "2026-09-06T05:04:00.000Z",
@@ -734,24 +752,6 @@
           "awards": [
             "Best bowler"
           ]
-        },
-        {
-          "id": 25999101,
-          "date": "2026-07-12T09:01:00.000Z",
-          "ground": "Ocf Ground",
-          "city": "Avadi",
-          "overs": 20,
-          "tournament": "Individual Match",
-          "team_a": "Udhaya Cricket Club",
-          "team_b": "OCF 11",
-          "team_a_score": "123/6",
-          "team_b_score": "124/0",
-          "result": "OCF 11 won by 10 wickets",
-          "ball_type": "LEATHER",
-          "url": "https://cricheroes.com/scorecard/25999101",
-          "batting": "17",
-          "bowling": "0/17 (3 ov)",
-          "awards": []
         }
       ]
     }
