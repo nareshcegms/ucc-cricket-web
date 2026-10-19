@@ -7,14 +7,32 @@
       "role": "All-rounder",
       "bio": "Plays for Udhaya Cricket Club \u2014 leather-ball stats only, synced from CricHeroes.",
       "cricheroes_url": "https://cricheroes.com/player-profile/15472519/naresh-dhanasekaran",
-      "matches": 154,
+      "matches": 155,
       "runs": 3696,
       "wickets": 96,
-      "average": 26.98,
+      "average": 26.78,
       "highest_score": "131*",
       "best_bowling": "4/10",
-      "last_synced": "2026-10-12T14:10:09Z",
+      "last_synced": "2026-10-19T11:50:57Z",
       "leather_matches": [
+        {
+          "id": 27692751,
+          "date": "2026-10-17T05:59:30.000Z",
+          "ground": "S2k Ground",
+          "city": "Chennai",
+          "overs": 20,
+          "tournament": "S2K CRICKET GROUND WARM UP MATCHES  (JAN 2026)",
+          "team_a": "Blue Star",
+          "team_b": "T16 11s",
+          "team_a_score": "105/10",
+          "team_b_score": "106/7",
+          "result": "T16 11s won by 3 wickets",
+          "ball_type": "LEATHER",
+          "url": "https://cricheroes.com/scorecard/27692751",
+          "batting": "0 (7)",
+          "bowling": "0/12 (2 ov)",
+          "awards": []
+        },
         {
           "id": 27613079,
           "date": "2026-10-11T04:53:14.000Z",
@@ -89,24 +107,6 @@
           "batting": "16 (12)",
           "bowling": "Did not bowl",
           "awards": []
-        },
-        {
-          "id": 27152552,
-          "date": "2026-09-20T05:07:35.000Z",
-          "ground": "St. Peters Ground",
-          "city": "Chennai",
-          "overs": 18,
-          "tournament": "KCC SELECT MINI TOURNAMENT - 7",
-          "team_a": "Udhaya Cricket Club",
-          "team_b": "KCC SELECT",
-          "team_a_score": "114/5",
-          "team_b_score": "115/6",
-          "result": "KCC SELECT won by 4 wickets",
-          "ball_type": "LEATHER",
-          "url": "https://cricheroes.com/scorecard/27152552",
-          "batting": "7 (4)",
-          "bowling": "Did not bowl",
-          "awards": []
         }
       ]
     },
@@ -123,7 +123,7 @@
       "average": 28.07,
       "highest_score": "82*",
       "best_bowling": "3/11",
-      "last_synced": "2026-10-12T14:10:17Z",
+      "last_synced": "2026-10-19T11:51:03Z",
       "leather_matches": [
         {
           "id": 27000810,
@@ -234,7 +234,7 @@
       "average": 15.67,
       "highest_score": "54*",
       "best_bowling": "0/4",
-      "last_synced": "2026-10-12T14:10:20Z",
+      "last_synced": "2026-10-19T11:51:07Z",
       "leather_matches": [
         {
           "id": 27613079,
@@ -341,7 +341,7 @@
       "average": 6.92,
       "highest_score": "30",
       "best_bowling": "2/14",
-      "last_synced": "2026-10-12T14:10:23Z",
+      "last_synced": "2026-10-19T11:51:10Z",
       "leather_matches": [
         {
           "id": 27330097,
@@ -448,7 +448,7 @@
       "average": 14.67,
       "highest_score": "20*",
       "best_bowling": "2/11",
-      "last_synced": "2026-10-12T14:10:26Z",
+      "last_synced": "2026-10-19T11:51:12Z",
       "leather_matches": [
         {
           "id": 26896109,
@@ -555,7 +555,7 @@
       "average": 12.44,
       "highest_score": "36*",
       "best_bowling": "4/22",
-      "last_synced": "2026-10-12T14:10:29Z",
+      "last_synced": "2026-10-19T11:51:15Z",
       "leather_matches": [
         {
           "id": 27152552,
@@ -662,7 +662,7 @@
       "average": 11.11,
       "highest_score": "31*",
       "best_bowling": "3/11",
-      "last_synced": "2026-10-12T14:10:32Z",
+      "last_synced": "2026-10-19T11:51:18Z",
       "leather_matches": [
         {
           "id": 27613079,
