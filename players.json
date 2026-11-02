@@ -7,14 +7,32 @@
       "role": "All-rounder",
       "bio": "Plays for Udhaya Cricket Club \u2014 leather-ball stats only, synced from CricHeroes.",
       "cricheroes_url": "https://cricheroes.com/player-profile/15472519/naresh-dhanasekaran",
-      "matches": 155,
-      "runs": 3696,
+      "matches": 156,
+      "runs": 3697,
       "wickets": 96,
-      "average": 26.78,
+      "average": 26.6,
       "highest_score": "131*",
       "best_bowling": "4/10",
-      "last_synced": "2026-10-26T12:05:29Z",
+      "last_synced": "2026-11-02T14:31:36Z",
       "leather_matches": [
+        {
+          "id": 27303160,
+          "date": "2026-10-31T09:09:00.000Z",
+          "ground": "Sindhi college - SPL Ground",
+          "city": "Chennai",
+          "overs": 20,
+          "tournament": "VK T22 League S-5",
+          "team_a": "Mighty XI Cricket Club (M11)",
+          "team_b": "White Walkers",
+          "team_a_score": "120/10",
+          "team_b_score": "65/10",
+          "result": "Mighty XI Cricket Club (M11) won by 55 runs",
+          "ball_type": "LEATHER",
+          "url": "https://cricheroes.com/scorecard/27303160",
+          "batting": "1 (5)",
+          "bowling": "Did not bowl",
+          "awards": []
+        },
         {
           "id": 27692751,
           "date": "2026-10-17T05:59:30.000Z",
@@ -89,24 +107,6 @@
           "batting": "19",
           "bowling": "1/19 (2 ov)",
           "awards": []
-        },
-        {
-          "id": 26816324,
-          "date": "2026-09-26T05:17:08.000Z",
-          "ground": "Sindhi college - SPL Ground",
-          "city": "Chennai",
-          "overs": 22,
-          "tournament": "VK T22 League S-5",
-          "team_a": "Mighty Warriors 2.0",
-          "team_b": "White Walkers",
-          "team_a_score": "132/10",
-          "team_b_score": "133/9",
-          "result": "White Walkers won by 1 wicket",
-          "ball_type": "LEATHER",
-          "url": "https://cricheroes.com/scorecard/26816324",
-          "batting": "16 (12)",
-          "bowling": "Did not bowl",
-          "awards": []
         }
       ]
     },
@@ -123,7 +123,7 @@
       "average": 28.07,
       "highest_score": "82*",
       "best_bowling": "3/11",
-      "last_synced": "2026-10-26T12:05:34Z",
+      "last_synced": "2026-11-02T14:31:43Z",
       "leather_matches": [
         {
           "id": 27000810,
@@ -234,7 +234,7 @@
       "average": 15.67,
       "highest_score": "54*",
       "best_bowling": "0/4",
-      "last_synced": "2026-10-26T12:05:36Z",
+      "last_synced": "2026-11-02T14:31:46Z",
       "leather_matches": [
         {
           "id": 27613079,
@@ -341,7 +341,7 @@
       "average": 6.92,
       "highest_score": "30",
       "best_bowling": "2/14",
-      "last_synced": "2026-10-26T12:05:38Z",
+      "last_synced": "2026-11-02T14:31:49Z",
       "leather_matches": [
         {
           "id": 27330097,
@@ -448,7 +448,7 @@
       "average": 14.67,
       "highest_score": "20*",
       "best_bowling": "2/11",
-      "last_synced": "2026-10-26T12:05:42Z",
+      "last_synced": "2026-11-02T14:31:52Z",
       "leather_matches": [
         {
           "id": 26896109,
@@ -555,7 +555,7 @@
       "average": 12.44,
       "highest_score": "36*",
       "best_bowling": "4/22",
-      "last_synced": "2026-10-26T12:05:44Z",
+      "last_synced": "2026-11-02T14:31:55Z",
       "leather_matches": [
         {
           "id": 27152552,
@@ -662,7 +662,7 @@
       "average": 11.11,
       "highest_score": "31*",
       "best_bowling": "3/11",
-      "last_synced": "2026-10-26T12:05:47Z",
+      "last_synced": "2026-11-02T14:31:58Z",
       "leather_matches": [
         {
           "id": 27613079,
